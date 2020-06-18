@@ -4,12 +4,8 @@
     <meta charset="UTF-8">
     <title>kreslení</title>
     <script>
-        let img = new Image();
-        img.src = "http://dl.damto.cz/mimon.png";
-        let x = 400;
-        let y = 100;
-        let xPostava = 100;
-        let yPostava = 200;
+
+
         let moveUp,moveDown,moveLeft,moveRight;
         function onKeyDown(event) {
             if (event.key === "ArrowUp") {
@@ -53,10 +49,19 @@
             ctx.beginPath();
             ctx.lineWidth = 5;
             ctx.strokeStyle = "red";
-            ctx.moveTo(0,0);
-            ctx.lineTo(200, 100);
-            ctx.lineTo(200, 10);
+            ctx.moveTo(200,200);
+            ctx.lineTo(400, 100);
+            ctx.lineTo(200, 200);
             ctx.stroke();
+
+            ctx.beginPath();
+            ctx.lineWidth = 5;
+            ctx.strokeStyle = "red";
+            ctx.moveTo(200,100);
+            ctx.lineTo(400, 200);
+            ctx.stroke();
+
+
 
             if (moveLeft) {
                 xPostava = xPostava - 1;
@@ -70,34 +75,12 @@
             if (moveDown) {
                 yPostava = yPostava + 1;
             }
-            ctx.beginPath();
-            ctx.lineWidth = 2;
-            ctx.strokeStyle = "green";
-            ctx.arc(xPostava, yPostava, 30, 0, 2*Math.PI);
-            ctx.stroke();
 
-            xMic = xMic + rychlostXMice;
-            yMic = yMic + rychlostYMice;
-            if (xMic < rMic) { //levy okraj
-                rychlostXMice = -1 * rychlostXMice;
-            }
-            if (xMic > cnv.width - rMic) { //pravy okraj
-                rychlostXMice = -1 * rychlostXMice;
-            }
-            if (yMic < rMic) { //horni okraj
-                rychlostYMice = -1 * rychlostYMice;
-            }
-            if (yMic > cnv.height - rMic) { //dolni okraj
-                rychlostYMice = -1 * rychlostYMice;
-            }
-            ctx.beginPath();
-            ctx.fillStyle = "blue";
-            ctx.arc(xMic, yMic, rMic, 0, 2*Math.PI);
-            ctx.fill();
 
-            x = x -1;
-            y = y +1;
-            ctx.drawImage(img, x, y, 100, 100);
+
+
+
+
         }
         function animuj() {
             rychlostXMice = Math.round(10*Math.random());
